@@ -60,9 +60,9 @@ $(document).on("click", '.button', function (event) {
               // fill up images div
             for(var i = 0;i<10;i++){
                 
-                rating = response.data[i].rating;
-                ratingTag = $("<p>Rating: "+rating+" </p>");
-                superImage = $("<img>");
+                var rating = response.data[i].rating;
+                var ratingTag = $("<p>Rating: "+rating+" </p>");
+                var superImage = $("<img>");
                 superImage.attr("src", response.data[i].images.fixed_height_still.url);
                 superImage.attr("class","gif");
                 superImage.attr("data-state","still");
