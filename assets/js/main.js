@@ -1,43 +1,48 @@
 var topics = ["spiderman", "batman", "hulk", "wonderwoman"];
 
 function generateButtons() {
+    //clear buttons div
+    $("#buttonsDiv").empty();
     for (var i = 0; i < topics.length; i++) {
 
         var newButton = $("<button>");
-        newButton.attr("id", "buttons");
+        newButton.attr("class", "button");
         newButton.attr("data-name", topics[i]);
         newButton.attr("value", topics[i]);
         newButton.text(topics[i]);
-
-        console.log("button ", newButton)
-
-        $("#buttons").append(newButton);
+        $("#buttonsDiv").append(newButton);
     }
 }
 
 generateButtons();
 
+
 $("#submitbutton").on("click", function () {
     event.preventDefault();
-    $("#buttons").empty();
+    
     var newSuper = $("#superHeroInput").val().trim();
     console.log(newSuper);
-
+   
     topics.push(newSuper);
     console.log(topics);
-    generateButtons();
     $("#superHeroInput").val("");
+    generateButtons();
+    
+    
 });
 
-$("#buttons").on("click", function () {
+
+$(".button").on("click", function () {
     console.log("a button was clicked");
-    dude =$(this).val();
-    console.log((this).attr("value"));
-    // var superHero = $(this).val();
-   
+    console.log(event);
+
+    var buttonName = $(this).attr("data-name");
+    console.log("this is ", buttonName);
+    
+   $("#imagesDiv").empty();
     // Constructing a queryURL using the animal name
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        dude + "&api_key=0WD0FIin0wZqsc3TspZekMfwgaz4zy2s&tag=&rating=G&limit=10";
+        buttonName + "&api_key=0WD0FIin0wZqsc3TspZekMfwgaz4zy2s&tag=&rating=G&limit=10";
     // Performing an AJAX request with the queryURL
     $.ajax({
         url: queryURL,
@@ -47,12 +52,22 @@ $("#buttons").on("click", function () {
         .then(function (response) {
             console.log(queryURL);
             console.log(response);
-            // fill up images div
-            // imageURL = (response.)
-            superImage = $("<img>");
-            superImage.attr("src",)
+              // fill up images div
+            for(var i = 0;i<10;i++){
+
+                animate = (response.data[i].images.fixed_height.url);
+                superImage = $("<img>");
+                superImage.attr("src",animate);
+                superImage.attr("class","gif");
+                superImage.attr("data-state","still");
+                superImage.attr("data-still","still");
+                superImage.attr("data-animate","still");
+                $("#imagesDiv").append(superImage);
+
+            }
         });
 });
+
 
     $(".gif").on("click", function () {
         // STEP ONE: study the html above.
@@ -65,7 +80,7 @@ $("#buttons").on("click", function () {
         // Use the .attr() method for this.
 
         // ============== FILL IN CODE HERE FOR STEP TWO =========================
-
+        console.log("gif clicked");
         var state = $(this).attr("data-state");
 
 
