@@ -5,26 +5,48 @@
 <head>
     <meta charset="utf-8">
     <title>GifTastic-SuperHeros</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
 </head>
 
 <body>
-    <div id="buttonsDiv">
-        
-    </div>
+ <div class="container"> 
+        <div class="jumbotron">
+                <h1 class="display-4">GifTastic!</h1>
+                <p class="lead">Add superhero buttons. Click them to see animations.</p>
+                <hr class="my-4">
+                
+              </div> 
 
-    <form id="superHeroForm">
-        <label>Add a superhero</label><br>
-        <input type=text id=superHeroInput><br>
-        <input id=submitbutton type=submit value=Submit><br>
-
-    </form>
-    <div id="imagesDiv">
+     <div class="row">
+        <div class="col-8">
+                <div id="buttonsDiv">
         
+                </div>
+        </div>
+        <div class="col-4">
+                <form id="superHeroForm">
+                        <label id="formLabel">Add a Superhero</label><br>
+                        <input type=text id=superHeroInput><br>
+                        <input id=submitbutton type=submit value=Submit><br>
+                
+                    </form>
+        </div>
+    </div>         
+    
+
+    <div class="row">
+        <div class="col">
+                <div id="imagesDiv">
+        
+            </div>
+        </div>
+
     </div>
-  <!-- <img src="https://media1.giphy.com/media/3o85xkQpyMlnBkpB9C/200_s.gif" data-still="https://media1.giphy.com/media/3o85xkQpyMlnBkpB9C/200_s.gif" data-animate="https://media1.giphy.com/media/3o85xkQpyMlnBkpB9C/200.gif" data-state="still" class="gif">
-  <img src="https://media2.giphy.com/media/8rFQp4kHXJ0gU/200_s.gif" data-still="https://media2.giphy.com/media/8rFQp4kHXJ0gU/200_s.gif" data-animate="https://media2.giphy.com/media/8rFQp4kHXJ0gU/200.gif" data-state="still" class="gif">
-  <img src="https://media3.giphy.com/media/W6LbnBigDe4ZG/200_s.gif" data-still="https://media3.giphy.com/media/W6LbnBigDe4ZG/200_s.gif" data-animate="https://media3.giphy.com/media/W6LbnBigDe4ZG/200.gif" data-state="still" class="gif"> -->
+    
+</div>  
  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  

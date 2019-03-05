@@ -1,3 +1,5 @@
+
+//Buttons array
 var topics = ["spiderman", "batman", "hulk", "wonderwoman"];
 
 function generateButtons() {
@@ -6,7 +8,7 @@ function generateButtons() {
     for (var i = 0; i < topics.length; i++) {
 
         var newButton = $("<button>");
-        newButton.attr("class", "button");
+        newButton.attr("class", "button btn btn-primary btn-lg");
         newButton.attr("data-name", topics[i]);
         newButton.attr("value", topics[i]);
         newButton.text(topics[i]);
@@ -14,8 +16,10 @@ function generateButtons() {
     }
 }
 
+//generate standard set of buttons to start
 generateButtons();
 
+//Submit buttons
 
 $("#submitbutton").on("click", function () {
     event.preventDefault();
@@ -27,12 +31,13 @@ $("#submitbutton").on("click", function () {
     console.log(topics);
     $("#superHeroInput").val("");
     generateButtons();
-    
-    
+       
 });
 
+// When buttons are pressed
 
-$(".button").on("click", function () {
+$(document).on("click", '.button', function (event) {
+
     console.log("a button was clicked");
     console.log(event);
 
@@ -40,9 +45,9 @@ $(".button").on("click", function () {
     console.log("this is ", buttonName);
     
    $("#imagesDiv").empty();
-    // Constructing a queryURL using the animal name
+    // Constructing a queryURL 
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        buttonName + "&api_key=0WD0FIin0wZqsc3TspZekMfwgaz4zy2s&tag=&rating=G&limit=10";
+        buttonName + "&api_key=0WD0FIin0wZqsc3TspZekMfwgaz4zy2s&tag=&rating=PG&limit=10";
     // Performing an AJAX request with the queryURL
     $.ajax({
         url: queryURL,
@@ -54,57 +59,39 @@ $(".button").on("click", function () {
             console.log(response);
               // fill up images div
             for(var i = 0;i<10;i++){
-
-                animate = (response.data[i].images.fixed_height.url);
+                
+                rating = response.data[i].rating;
+                ratingTag = $("<p>Rating: "+rating+" </p>");
                 superImage = $("<img>");
-                superImage.attr("src",animate);
+                superImage.attr("src", response.data[i].images.fixed_height_still.url);
                 superImage.attr("class","gif");
                 superImage.attr("data-state","still");
-                superImage.attr("data-still","still");
-                superImage.attr("data-animate","still");
+                superImage.attr("data-still", response.data[i].images.fixed_height_still.url);
+                superImage.attr("data-animate", response.data[i].images.fixed_height.url);
                 $("#imagesDiv").append(superImage);
-
+                $("#imagesDiv").append(ratingTag);
+                
             }
         });
+ });
+
+// Pause and unpause gifs
+$(document).on("click", '.gif', function (event) {
+
+    
+    console.log(event);
+    console.log("gif clicked");
+
+    var state = $(this).attr("data-state");
+    
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"))
+        $(this).attr("data-state", "animate");
+    }
+
+    if (state === "animate") {
+        $(this).attr("src", $(this).attr("data-still"))
+        $(this).attr("data-state", "still")
+    }
 });
 
-
-    $(".gif").on("click", function () {
-        // STEP ONE: study the html above.
-        // Look at all the data attributes.
-        // Run the file in the browser. Look at the images.
-
-        // After we complete steps 1 and 2 we'll be able to pause gifs from giphy.
-
-        // STEP TWO: make a variable named state and then store the image's data-state into it.
-        // Use the .attr() method for this.
-
-        // ============== FILL IN CODE HERE FOR STEP TWO =========================
-        console.log("gif clicked");
-        var state = $(this).attr("data-state");
-
-
-        // STEP THREE: Check if the variable state is equal to 'still',
-        // then update the src attribute of this image to it's data-animate value,
-        // and update the data-state attribute to 'animate'.
-
-        // If state is equal to 'animate', then update the src attribute of this
-        // image to it's data-still value and update the data-state attribute to 'still'
-        // ============== FILL IN CODE HERE FOR STEP THREE =========================
-
-        if (state === "still") {
-            $(this).attr("src", $(this).attr("data-animate"))
-            $(this).attr("data-state", "animate");
-        }
-
-        else {
-            $(this).attr("src", $(this).attr("data-still"))
-            $(this).attr("data-state", "still")
-        }
-
-
-        // ==============================================
-
-        // STEP FOUR: open the file in the browser and click on the images.
-        // Then click again to pause.
-    });

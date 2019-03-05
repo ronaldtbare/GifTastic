@@ -1,8 +1,22 @@
+body{
+    background-color: gray;
+}
+
+
 #superHeroForm{
     /* text-align: right; */
 }
 
-#buttons{
+.btn{
     padding:10px;
     border: 10px;
+    background-color: purple;
+}
+
+#formLabel{
+    color:white;
+}
+
+#imagesDiv{
+    padding:10px;
 }
