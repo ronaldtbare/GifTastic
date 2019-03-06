@@ -3,7 +3,7 @@ by Travis Bare
 
 ## Technology
 * HTML, CSS, Bootstrap, JavaScript,jquery,AJAX
-* Live demo: https://ronaldtbare.github.io/Psychic-GameGifTastic
+* Live demo: https://ronaldtbare.github.io/GifTastic
 
 ## About
 * GifTastic dynamically renders buttons on a screen and uses and gif API to 
