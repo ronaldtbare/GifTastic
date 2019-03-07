@@ -20,4 +20,5 @@ body{
 
 #imagesDiv{
     padding:10px;
+    display:inline-block;
 }
