@@ -2,7 +2,7 @@
 by Travis Bare
 
 ## Technology
-* HTML, CSS, Bootstrap, JavaScript,jquery,AJAX
+* HTML, CSS, Bootstrap, JavaScript, jquery, AJAX
 * Live demo: https://ronaldtbare.github.io/GifTastic
 
 ## About
