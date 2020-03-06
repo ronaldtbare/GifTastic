@@ -7,6 +7,9 @@ body{
     /* text-align: right; */
 }
 
+#superHeroInput{
+    margin: 5px;
+
 .btn{
     padding:10px;
     border: 10px;
